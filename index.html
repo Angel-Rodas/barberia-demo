@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>Barbería El Clásico — Mockup</title>
+<title>Barbería El Clásico</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
@@ -813,7 +813,91 @@ body {
   );
   border: 1px solid rgba(26, 26, 46, 0.1);
 }
+
+/* ============================================================
+   DARK OLED THEME — overrides light surfaces to true dark
+   ============================================================ */
+:root {
+  --bg: #050507;
+  --ink: #f0eee9;
+  --text: #e6e4df;
+  --muted: #9a9aa8;
+  --surface: #121218;
+  --surface-2: #17171f;
+  --line: rgba(255, 255, 255, 0.07);
+  --shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 8px 40px rgba(0, 0, 0, 0.6);
+}
+body {
+  background: var(--bg);
+  color: var(--text);
+  background-image:
+    radial-gradient(ellipse at 50% 0%, rgba(201, 168, 76, 0.05) 0%, transparent 55%),
+    radial-gradient(ellipse at 80% 100%, rgba(201, 168, 76, 0.02) 0%, transparent 50%);
+  background-attachment: fixed;
+}
+.top-bar { background: #0b0b12; box-shadow: 0 2px 20px rgba(0,0,0,0.6); }
+.card, .barber-card, .date-pill, .time-slot, .kpi-card, .quick-action, .appt-card {
+  background: var(--surface);
+  backdrop-filter: none; -webkit-backdrop-filter: none;
+  border-color: var(--line);
+}
+.card { border: 1px solid var(--line); }
+.section-title, .empty-state h3, .barber-card .name, .service-item .name,
+.bar-row .bar-label, .appt-card .customer-name, .customer-result .c-name,
+.text-navy { color: var(--ink); }
+.input-group input, .input-group select {
+  background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.12);
+  color: var(--ink);
+}
+.input-group input::placeholder { color: #6a6a78; }
+.input-group select option { background: var(--surface-2); color: var(--ink); }
+.phone-input .prefix { background: rgba(255,255,255,0.04); border-color: rgba(255,255,255,0.12); }
+.otp-box { background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.14); color: var(--ink); }
+.modal { background: var(--surface-2); box-shadow: 0 -4px 40px rgba(0,0,0,0.7); }
+.modal-overlay { background: rgba(0, 0, 0, 0.7); }
+.tab-row { background: rgba(255,255,255,0.05); border-color: var(--line); }
+.tab.active { background: var(--gold); color: #0a0a0f; box-shadow: none; }
+.step-dot { border-color: rgba(255,255,255,0.14); }
+.step-dot.active { background: var(--gold); border-color: var(--gold); color: #0a0a0f; }
+.step-line { background: rgba(255,255,255,0.1); }
+.service-item { border-bottom-color: var(--line); }
+.service-item:hover { background: rgba(201,168,76,0.05); }
+.service-item .radio { border-color: rgba(255,255,255,0.2); }
+.date-pill.selected, .time-slot.selected {
+  background: rgba(201, 168, 76, 0.14); border-color: var(--gold);
+  color: var(--gold-light); box-shadow: none;
+}
+.time-slot.taken, .time-slot.break { background: rgba(255,255,255,0.02); opacity: 0.3; }
+.bar-row .bar-track { background: rgba(255,255,255,0.06); }
+.visit-row { border-bottom-color: var(--line); }
+.visit-row .barber-icon { background: rgba(255,255,255,0.07); color: var(--gold-light); }
+.checkbox-row .check-box { border-color: rgba(255,255,255,0.18); }
+.customer-result { border-bottom-color: var(--line); }
+.customer-result:hover { background: rgba(201,168,76,0.06); }
+.nav-dot { background: rgba(255,255,255,0.12); }
+.nav-dot.active { background: var(--gold); }
+.btn-secondary { border: 1px solid var(--line); }
+.bottom-nav { background: #0b0b12; }
+.appt-card.past { border-left-color: rgba(255,255,255,0.1); }
+.barber-pole-stripes .stripe-inner {
+  background: repeating-linear-gradient(
+    90deg,
+    #0b0b12 0px, #0b0b12 12px,
+    var(--gold) 12px, var(--gold) 14px,
+    var(--barber-red) 14px, var(--barber-red) 26px,
+    var(--gold) 26px, var(--gold) 28px,
+    #0b0b12 28px, #0b0b12 40px
+  );
+  opacity: 0.75;
+}
+.milestone-screen-bg h2 { color: var(--ink); }
 </style>
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#050507">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="apple-touch-icon" href="icon-192.png">
 </head>
 <body>
 
@@ -829,7 +913,7 @@ body {
   </div>
   <div class="barber-pole-stripes"><div class="stripe-inner"></div></div>
   <div class="content text-center">
-    <p style="font-family:var(--font-display);font-size:16px;font-weight:700;color:var(--navy);margin-bottom:4px;">
+    <p style="font-family:var(--font-display);font-size:16px;font-weight:700;color:var(--ink);margin-bottom:4px;">
       Bienvenido
     </p>
     <p style="font-size:13px;color:var(--muted);margin-bottom:8px;">
@@ -854,12 +938,12 @@ body {
 
     <div style="position:relative;margin:4px 0 16px;">
       <div class="divider-gold"></div>
-      <span style="position:absolute;top:-8px;left:50%;transform:translateX(-50%);background:var(--cream);padding:0 14px;font-size:11px;color:var(--muted);font-weight:500;">O ingresa tu teléfono</span>
+      <span style="position:absolute;top:-8px;left:50%;transform:translateX(-50%);background:var(--bg);padding:0 14px;font-size:11px;color:var(--muted);font-weight:500;">O ingresa tu teléfono</span>
     </div>
 
     <div class="phone-input" style="margin-bottom:14px;">
       <span class="prefix">+504</span>
-      <input type="tel" placeholder="9876-5432" maxlength="8" style="width:100%;padding:14px 16px;border:1.5px solid rgba(26,26,46,0.1);border-left:none;border-radius:0 var(--radius-sm) var(--radius-sm) 0;font-size:16px;outline:none;background:rgba(255,255,255,0.9);">
+      <input type="tel" placeholder="9876-5432" maxlength="8" style="width:100%;padding:14px 16px;border:1.5px solid rgba(26,26,46,0.1);border-left:none;border-radius:0 var(--radius-sm) var(--radius-sm) 0;font-size:16px;outline:none;background:rgba(255,255,255,0.06);color:var(--ink);">
     </div>
     <button class="btn btn-primary" onclick="showScreen('screen-register')">Buscar o registrarme</button>
 
@@ -900,7 +984,7 @@ body {
 
     <div class="card card-gold-border">
       <div class="text-center" style="margin-bottom:18px;">
-        <h2 style="font-family:var(--font-display);font-size:19px;font-weight:700;color:var(--navy);margin-bottom:4px;">Sin contraseña</h2>
+        <h2 style="font-family:var(--font-display);font-size:19px;font-weight:700;color:var(--ink);margin-bottom:4px;">Sin contraseña</h2>
         <p style="font-size:13px;color:var(--muted);">Te mandamos un código por WhatsApp</p>
       </div>
 
@@ -940,9 +1024,9 @@ body {
       </svg>
     </div>
 
-    <h2 style="font-family:var(--font-display);font-size:20px;font-weight:700;color:var(--navy);margin-bottom:6px;">Revisa tu WhatsApp</h2>
+    <h2 style="font-family:var(--font-display);font-size:20px;font-weight:700;color:var(--ink);margin-bottom:6px;">Revisa tu WhatsApp</h2>
     <p style="font-size:13px;color:var(--muted);margin-bottom:24px;max-width:290px;margin-left:auto;margin-right:auto;">
-      Enviamos un código de 6 dígitos al <strong style="color:var(--navy);">+504 9988-7766</strong>
+      Enviamos un código de 6 dígitos al <strong style="color:var(--ink);">+504 9988-7766</strong>
     </p>
 
     <div style="display:flex;gap:8px;justify-content:center;margin-bottom:20px;">
@@ -982,13 +1066,13 @@ body {
             <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" fill="currentColor" style="color:var(--gold-light)"/>
           </svg>
         </div>
-        <h2 style="font-family:var(--font-display);font-size:20px;font-weight:700;color:var(--navy);margin-bottom:4px;">Únete a la familia</h2>
+        <h2 style="font-family:var(--font-display);font-size:20px;font-weight:700;color:var(--ink);margin-bottom:4px;">Únete a la familia</h2>
         <p style="font-size:13px;color:var(--muted);">Registra tus datos y acumula visitas para cortes gratis</p>
       </div>
 
       <div class="input-group">
         <label>Nombre completo</label>
-        <input type="text" placeholder="Juan Pérez" value="Carlos Mendoza">
+        <input type="text" id="reg-name" placeholder="Juan Pérez" value="Carlos Mendoza">
       </div>
 
       <div class="input-group">
@@ -1030,10 +1114,10 @@ body {
         <span class="check-label">Acepto recibir promociones por WhatsApp. Los avisos de tus citas y de tu tarjeta llegan siempre.</span>
       </label>
 
-      <button class="btn btn-primary" onclick="showScreen('screen-stamp')" style="margin-top:12px;">
+      <button class="btn btn-primary" onclick="registerDemo()" style="margin-top:12px;">
         Registrarme y entrar
       </button>
-      <p style="font-size:11px;color:var(--muted);text-align:center;margin-top:12px;">Al registrarte aceptas nuestro <a href="#privacidad" onclick="showScreen('screen-privacidad');return false;" style="color:var(--navy);font-weight:600;">Aviso de Privacidad</a></p>
+      <p style="font-size:11px;color:var(--muted);text-align:center;margin-top:12px;">Al registrarte aceptas nuestro <a href="#privacidad" onclick="showScreen('screen-privacidad');return false;" style="color:var(--ink);font-weight:600;">Aviso de Privacidad</a></p>
     </div>
   </div>
 </div>
@@ -1049,32 +1133,32 @@ body {
   <div class="barber-pole-stripes"><div class="stripe-inner"></div></div>
   <div class="content">
     <div class="card">
-      <h3 style="font-family:var(--font-display);font-size:16px;color:var(--navy);margin-bottom:8px;">Qué guardamos</h3>
+      <h3 style="font-family:var(--font-display);font-size:16px;color:var(--ink);margin-bottom:8px;">Qué guardamos</h3>
       <p style="font-size:13px;color:var(--text);line-height:1.6;margin-bottom:16px;">
         Tu nombre, tu número de WhatsApp, y el historial de tus visitas y sellos.
         Si nos lo das, el día y mes de tu cumpleaños. <strong>Nunca pedimos el año.</strong>
       </p>
 
-      <h3 style="font-family:var(--font-display);font-size:16px;color:var(--navy);margin-bottom:8px;">Para qué lo usamos</h3>
+      <h3 style="font-family:var(--font-display);font-size:16px;color:var(--ink);margin-bottom:8px;">Para qué lo usamos</h3>
       <p style="font-size:13px;color:var(--text);line-height:1.6;margin-bottom:16px;">
         Para llevar tu tarjeta de fidelidad, avisarte de tus citas, y mandarte tu promo
         de cumpleaños. Nada más.
       </p>
 
-      <h3 style="font-family:var(--font-display);font-size:16px;color:var(--navy);margin-bottom:8px;">Con quién lo compartimos</h3>
+      <h3 style="font-family:var(--font-display);font-size:16px;color:var(--ink);margin-bottom:8px;">Con quién lo compartimos</h3>
       <p style="font-size:13px;color:var(--text);line-height:1.6;margin-bottom:16px;">
         Con nadie. No vendemos ni compartimos tu información. Los mensajes te llegan
         por WhatsApp, así que Meta los entrega, igual que cualquier otro chat.
       </p>
 
-      <h3 style="font-family:var(--font-display);font-size:16px;color:var(--navy);margin-bottom:8px;">Tus promociones</h3>
+      <h3 style="font-family:var(--font-display);font-size:16px;color:var(--ink);margin-bottom:8px;">Tus promociones</h3>
       <p style="font-size:13px;color:var(--text);line-height:1.6;margin-bottom:16px;">
         Puedes apagar las promociones cuando quieras desde tu tarjeta, o respondiendo
         <strong>STOP</strong> por WhatsApp. Los avisos de tus citas y de tu tarjeta
         siguen llegando, porque son parte del servicio.
       </p>
 
-      <h3 style="font-family:var(--font-display);font-size:16px;color:var(--navy);margin-bottom:8px;">Borrar tus datos</h3>
+      <h3 style="font-family:var(--font-display);font-size:16px;color:var(--ink);margin-bottom:8px;">Borrar tus datos</h3>
       <p style="font-size:13px;color:var(--text);line-height:1.6;margin-bottom:0;">
         Pídeselo a tu barbero y borramos tu nombre y tu número.
       </p>
@@ -1104,21 +1188,21 @@ body {
             <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" fill="currentColor" style="color:var(--gold)"/>
           </svg>
           <h2>Tarjeta de Lealtad</h2>
-          <p class="subtitle">Carlos Mendoza · Cliente desde Julio 2026</p>
+          <p class="subtitle"><span class="st-name">Carlos Mendoza</span> · Cliente desde Julio 2026</p>
           <div class="divider"></div>
         </div>
 
         <div style="display:flex;align-items:baseline;justify-content:center;gap:6px;margin-bottom:4px;position:relative;z-index:1;">
-          <span style="font-family:var(--font-display);font-size:28px;font-weight:700;color:var(--gold-light);">7</span>
+          <span id="st-count" style="font-family:var(--font-display);font-size:28px;font-weight:700;color:var(--gold-light);">7</span>
           <span style="font-size:14px;color:rgba(250,248,245,0.4);">/ 10 cortes</span>
         </div>
-        <p style="font-size:12px;color:rgba(250,248,245,0.5);text-align:center;margin-bottom:16px;position:relative;z-index:1;">
+        <p id="st-sub" style="font-size:12px;color:rgba(250,248,245,0.5);text-align:center;margin-bottom:16px;position:relative;z-index:1;">
           Te faltan <strong style="color:var(--gold-light);">3</strong> para: <strong style="color:var(--gold);">"Corte Clásico Gratis"</strong>
         </p>
 
-        <div class="progress-bar"><div class="fill" style="width:70%;"></div></div>
+        <div class="progress-bar"><div class="fill" id="st-fill" style="width:70%;"></div></div>
 
-        <div class="stamp-grid">
+        <div class="stamp-grid" id="st-grid">
           <div class="stamp-circle filled"><span class="stamp-icon">✓</span></div>
           <div class="stamp-circle filled"><span class="stamp-icon">✓</span></div>
           <div class="stamp-circle filled"><span class="stamp-icon">✓</span></div>
@@ -1137,31 +1221,17 @@ body {
       </div>
     </div>
 
+    <div class="card" id="st-appt" style="display:none;border-left:4px solid var(--gold);padding:14px 18px;">
+      <div style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:0.05em;font-weight:500;">Próxima cita</div>
+      <div id="st-appt-text" style="font-weight:700;color:var(--ink);font-size:15px;margin-top:2px;"></div>
+    </div>
+
     <div class="card">
       <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;">
         <h3 class="section-title" style="margin-bottom:0;">Últimas visitas</h3>
         <span style="font-size:11px;color:var(--muted);">Ver todo →</span>
       </div>
-      <div class="visit-row">
-        <span class="date">20 Jul</span>
-        <span class="barber-icon">✂</span>
-        <span class="service">Juan — Corte clásico</span>
-      </div>
-      <div class="visit-row">
-        <span class="date">15 Jul</span>
-        <span class="barber-icon">✂</span>
-        <span class="service">Luis — Corte + barba</span>
-      </div>
-      <div class="visit-row">
-        <span class="date">10 Jul</span>
-        <span class="barber-icon">✂</span>
-        <span class="service">Juan — Corte clásico</span>
-      </div>
-      <div class="visit-row">
-        <span class="date">1 Jul</span>
-        <span class="barber-icon">✂</span>
-        <span class="service">Pedro — Corte infantil</span>
-      </div>
+      <div id="st-visits"></div>
       <button class="btn-gold-outline" style="margin-top:10px;">Ver historial completo →</button>
     </div>
 
@@ -1222,7 +1292,7 @@ body {
             <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" fill="currentColor" style="color:var(--gold)"/>
           </svg>
           <h2>Tarjeta de Lealtad</h2>
-          <p class="subtitle">Carlos Mendoza · Cliente desde Julio 2026</p>
+          <p class="subtitle"><span class="st-name">Carlos Mendoza</span> · Cliente desde Julio 2026</p>
           <div class="divider"></div>
         </div>
 
@@ -1340,7 +1410,7 @@ body {
     <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px;">
       <h3 class="section-title" style="margin-bottom:0;">Servicios disponibles</h3>
     </div>
-    <p class="section-subtitle">Con <strong style="color:var(--navy);">Juan</strong> — elige el servicio que deseas</p>
+    <p class="section-subtitle">Con <strong style="color:var(--ink);">Juan</strong> — elige el servicio que deseas</p>
 
     <div class="card" style="padding:4px 16px;">
       <div class="service-item selected" onclick="selectService(this)">
@@ -1419,7 +1489,7 @@ body {
       <strong>L120</strong>
     </div>
 
-    <button class="btn btn-success" onclick="showToast('toast-booking')">Confirmar cita</button>
+    <button class="btn btn-success" onclick="confirmBooking()">Confirmar cita</button>
   </div>
   <div class="toast" id="toast-booking">✓ Cita confirmada · Te enviaremos un recordatorio por WhatsApp</div>
 </div>
@@ -1448,13 +1518,13 @@ body {
     <div class="card" style="padding:14px 18px;display:flex;align-items:center;justify-content:space-between;border-left:4px solid var(--gold);">
       <div>
         <div style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:0.05em;font-weight:500;">Próxima cita</div>
-        <div style="font-weight:700;color:var(--navy);font-size:15px;">Pedro — 10:00</div>
+        <div style="font-weight:700;color:var(--ink);font-size:15px;"><span class="st-name">Carlos Mendoza</span> — 10:00</div>
       </div>
       <span style="font-size:11px;padding:4px 12px;background:linear-gradient(135deg,var(--gold),var(--gold-light));color:var(--navy);border-radius:20px;font-weight:700;">Ahora</span>
     </div>
 
     <div style="display:flex;align-items:center;gap:8px;margin:4px 0 12px;">
-      <span style="font-size:13px;font-weight:600;color:var(--navy);">Agenda del día</span>
+      <span style="font-size:13px;font-weight:600;color:var(--ink);">Agenda del día</span>
       <span style="font-size:11px;color:var(--muted);">· 4 citas</span>
     </div>
 
@@ -1463,26 +1533,26 @@ body {
       <div class="info">
         <div class="customer-name">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" style="display:inline;vertical-align:middle;margin-right:4px;"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z" fill="currentColor" style="color:var(--success);"/></svg>
-          Carlos M.
+          José D.
         </div>
         <div class="service-name">Corte + barba · L200</div>
       </div>
     </div>
 
-    <div class="appt-card" style="border-left-color:var(--success);">
+    <div class="appt-card" style="border-left-color:var(--success);" id="row-checkin">
       <div class="time" style="color:var(--success);">10:00</div>
       <div class="info">
-        <div class="customer-name">Pedro Pérez <span class="stamp-badge">7/10</span></div>
+        <div class="customer-name"><span class="st-name">Carlos Mendoza</span> <span class="stamp-badge" id="badge-checkin">9/10</span></div>
         <div class="service-name">Corte clásico · L120</div>
       </div>
-      <button class="btn btn-primary btn-sm" onclick="showScreen('screen-stamp')">Registrar</button>
+      <button class="btn btn-primary btn-sm" onclick="checkIn()">Registrar</button>
     </div>
 
-    <div class="appt-card" style="border-left-color:var(--gold);background:linear-gradient(135deg,rgba(201,168,76,0.07),rgba(201,168,76,0.02));">
+    <div class="appt-card" id="row-redeem" style="display:none;border-left-color:var(--gold);background:linear-gradient(135deg,rgba(201,168,76,0.07),rgba(201,168,76,0.02));">
       <div class="time" style="color:var(--gold-bright);">11:00</div>
       <div class="info">
         <div class="customer-name">
-          Carlos M.
+          <span class="st-name">Carlos Mendoza</span>
           <span class="stamp-badge" style="background:linear-gradient(135deg,var(--gold),var(--gold-light));color:var(--navy);border-color:var(--gold);">10/10</span>
         </div>
         <div class="service-name" style="color:var(--gold-bright);font-weight:600;">★ Tiene 1 corte gratis</div>
@@ -1518,7 +1588,7 @@ body {
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" fill="currentColor" style="color:var(--gold-light)"/></svg>
       </div>
       <div>
-        <h3 style="font-family:var(--font-display);font-size:17px;font-weight:700;color:var(--navy);">Registrar walk-in</h3>
+        <h3 style="font-family:var(--font-display);font-size:17px;font-weight:700;color:var(--ink);">Registrar walk-in</h3>
         <p style="font-size:12px;color:var(--muted);">Busca al cliente por nombre o teléfono</p>
       </div>
     </div>
@@ -1563,21 +1633,21 @@ body {
           <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" fill="currentColor" style="color:var(--navy)"/>
         </svg>
       </div>
-      <h3 style="font-family:var(--font-display);font-size:19px;font-weight:700;color:var(--navy);margin-bottom:4px;">Canjear corte gratis</h3>
+      <h3 style="font-family:var(--font-display);font-size:19px;font-weight:700;color:var(--ink);margin-bottom:4px;">Canjear corte gratis</h3>
       <p style="font-size:13px;color:var(--muted);">Carlos Mendoza · CLASICO-10</p>
     </div>
 
     <div style="background:rgba(201,168,76,0.07);border:1px solid var(--border);border-radius:var(--radius-sm);padding:14px;margin-bottom:16px;">
       <div style="display:flex;justify-content:space-between;margin-bottom:8px;">
         <span style="font-size:13px;color:var(--muted);">Servicio</span>
-        <span style="font-size:13px;font-weight:600;color:var(--navy);">Corte clásico</span>
+        <span style="font-size:13px;font-weight:600;color:var(--ink);">Corte clásico</span>
       </div>
       <div style="display:flex;justify-content:space-between;margin-bottom:8px;">
         <span style="font-size:13px;color:var(--muted);">Precio normal</span>
         <span style="font-size:13px;color:var(--muted);text-decoration:line-through;">L120</span>
       </div>
       <div style="display:flex;justify-content:space-between;padding-top:8px;border-top:1px solid var(--border);">
-        <span style="font-size:13px;font-weight:700;color:var(--navy);">A cobrar</span>
+        <span style="font-size:13px;font-weight:700;color:var(--ink);">A cobrar</span>
         <span style="font-family:var(--font-display);font-size:18px;font-weight:900;color:var(--success);letter-spacing:0.04em;">GRATIS</span>
       </div>
     </div>
@@ -1586,7 +1656,7 @@ body {
       Esta visita cuenta para su siguiente tarjeta.<br>El cliente recibe confirmación por WhatsApp.
     </p>
 
-    <button class="btn btn-primary" onclick="this.closest('.modal-overlay').classList.remove('show');showScreen('screen-barber');showToast('toast-redeem');">
+    <button class="btn btn-primary" onclick="this.closest('.modal-overlay').classList.remove('show');redeemFree();">
       Confirmar canje
     </button>
     <button class="btn btn-outline" onclick="this.closest('.modal-overlay').classList.remove('show')" style="margin-top:8px;">
@@ -1618,13 +1688,13 @@ body {
 
     <div class="kpi-row">
       <div class="kpi-card"><div class="value" style="background:linear-gradient(135deg,var(--gold),var(--gold-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">32</div><div class="label">Visitas</div></div>
-      <div class="kpi-card"><div class="value" style="background:linear-gradient(135deg,var(--navy),var(--dark-accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">187</div><div class="label">Clientes</div></div>
+      <div class="kpi-card"><div class="value" style="background:linear-gradient(135deg,#f0eee9,#b8b8c8);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">187</div><div class="label">Clientes</div></div>
       <div class="kpi-card"><div class="value" style="background:linear-gradient(135deg,var(--success),#2ecc71);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">L89.4k</div><div class="label">Ingresos</div></div>
     </div>
 
     <div class="card">
       <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;">
-        <h3 style="font-family:var(--font-display);font-size:14px;font-weight:700;color:var(--navy);">Por barbero (hoy)</h3>
+        <h3 style="font-family:var(--font-display);font-size:14px;font-weight:700;color:var(--ink);">Por barbero (hoy)</h3>
         <span style="font-size:11px;color:var(--muted); font-weight:500;">Cortes · Ingresos</span>
       </div>
       <div class="bar-chart">
@@ -1635,12 +1705,12 @@ body {
         </div>
         <div class="bar-row">
           <span class="bar-label">Luis</span>
-          <div class="bar-track"><div class="bar-fill" style="width:63%;background:linear-gradient(90deg,var(--navy-mid) 0%,var(--dark-accent) 100%);">10</div></div>
+          <div class="bar-track"><div class="bar-fill" style="width:63%;background:linear-gradient(90deg,#34345a 0%,#46466e 100%);color:#f0eee9;">10</div></div>
           <span class="bar-value">L1,280</span>
         </div>
         <div class="bar-row">
           <span class="bar-label">Pedro</span>
-          <div class="bar-track"><div class="bar-fill" style="width:63%;background:linear-gradient(90deg,var(--navy-mid) 0%,var(--dark-accent) 100%);">10</div></div>
+          <div class="bar-track"><div class="bar-fill" style="width:63%;background:linear-gradient(90deg,#34345a 0%,#46466e 100%);color:#f0eee9;">10</div></div>
           <span class="bar-value">L1,120</span>
         </div>
         <div class="bar-row">
@@ -1652,10 +1722,10 @@ body {
     </div>
 
     <div class="card">
-      <h3 style="font-family:var(--font-display);font-size:14px;font-weight:700;color:var(--navy);margin-bottom:12px;">Clientes</h3>
+      <h3 style="font-family:var(--font-display);font-size:14px;font-weight:700;color:var(--ink);margin-bottom:12px;">Clientes</h3>
       <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;text-align:center;margin-bottom:12px;">
-        <div style="padding:8px;background:rgba(26,26,46,0.02);border-radius:8px;">
-          <div style="font-weight:800;font-size:22px;font-family:var(--font-display);color:var(--navy);">342</div>
+        <div style="padding:8px;background:rgba(255,255,255,0.04);border-radius:8px;">
+          <div style="font-weight:800;font-size:22px;font-family:var(--font-display);color:var(--ink);">342</div>
           <div style="font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:0.06em;">Total</div>
         </div>
         <div style="padding:8px;background:rgba(46,204,113,0.05);border-radius:8px;">
@@ -1680,10 +1750,10 @@ body {
     </div>
 
     <div class="card">
-      <h3 style="font-family:var(--font-display);font-size:14px;font-weight:700;color:var(--navy);margin-bottom:12px;">Actividad del día</h3>
+      <h3 style="font-family:var(--font-display);font-size:14px;font-weight:700;color:var(--ink);margin-bottom:12px;">Actividad del día</h3>
       <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;text-align:center;margin-bottom:12px;">
-        <div style="padding:8px;background:rgba(26,26,46,0.02);border-radius:8px;">
-          <div style="font-weight:700;font-size:18px;color:var(--navy);">12</div>
+        <div style="padding:8px;background:rgba(255,255,255,0.04);border-radius:8px;">
+          <div style="font-weight:700;font-size:18px;color:var(--ink);">12</div>
           <div style="font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:0.06em;">Citas</div>
         </div>
         <div style="padding:8px;background:rgba(192,57,43,0.04);border-radius:8px;">
@@ -1750,10 +1820,10 @@ body {
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M20 2L22 4L12 14L2 4L4 2L12 10L20 2Z" fill="currentColor" style="color:var(--gold-light)"/></svg>
         </div>
         <div style="flex:1;">
-          <div style="font-weight:700;font-size:16px;color:var(--navy);">Juan</div>
+          <div style="font-weight:700;font-size:16px;color:var(--ink);">Juan</div>
           <div style="font-size:12px;color:var(--muted);">12 cortes hoy · L1,560</div>
         </div>
-        <button style="width:32px;height:32px;border-radius:50%;border:1px solid rgba(26,26,46,0.08);background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:16px;color:var(--muted);transition:all 0.15s;">✎</button>
+        <button style="width:32px;height:32px;border-radius:50%;border:1px solid rgba(255,255,255,0.14);background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:16px;color:var(--muted);transition:all 0.15s;">✎</button>
       </div>
       <div style="margin-top:12px;padding-top:12px;border-top:1px solid rgba(26,26,46,0.06);">
         <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:6px;font-size:12px;">
@@ -1791,10 +1861,10 @@ body {
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M20 2L22 4L12 14L2 4L4 2L12 10L20 2Z" fill="currentColor" style="color:var(--gold-light)"/></svg>
         </div>
         <div style="flex:1;">
-          <div style="font-weight:700;font-size:16px;color:var(--navy);">Luis</div>
+          <div style="font-weight:700;font-size:16px;color:var(--ink);">Luis</div>
           <div style="font-size:12px;color:var(--muted);">10 cortes hoy · L1,280</div>
         </div>
-        <button style="width:32px;height:32px;border-radius:50%;border:1px solid rgba(26,26,46,0.08);background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:16px;color:var(--muted);">✎</button>
+        <button style="width:32px;height:32px;border-radius:50%;border:1px solid rgba(255,255,255,0.14);background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:16px;color:var(--muted);">✎</button>
       </div>
       <div style="margin-top:12px;padding-top:12px;border-top:1px solid rgba(26,26,46,0.06);">
         <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:6px;font-size:12px;">
@@ -1832,13 +1902,13 @@ body {
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M20 2L22 4L12 14L2 4L4 2L12 10L20 2Z" fill="currentColor" style="color:var(--gold-light)"/></svg>
         </div>
         <div style="flex:1;">
-          <div style="font-weight:700;font-size:16px;color:var(--navy);">
+          <div style="font-weight:700;font-size:16px;color:var(--ink);">
             Pedro
             <span style="font-size:10px;background:linear-gradient(135deg,var(--warning),#f1c40f);color:white;padding:2px 8px;border-radius:10px;margin-left:4px;font-weight:700;">OFF</span>
           </div>
           <div style="font-size:12px;color:var(--muted);">Día libre hoy</div>
         </div>
-        <button style="width:32px;height:32px;border-radius:50%;border:1px solid rgba(26,26,46,0.08);background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:16px;color:var(--muted);">✎</button>
+        <button style="width:32px;height:32px;border-radius:50%;border:1px solid rgba(255,255,255,0.14);background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:16px;color:var(--muted);">✎</button>
       </div>
     </div>
   </div>
@@ -1862,7 +1932,7 @@ body {
         <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" fill="currentColor" style="color:var(--navy);"/>
       </svg>
     </div>
-    <h2 style="font-family:var(--font-display);font-size:26px;font-weight:900;color:var(--navy);margin-bottom:8px;">¡Completaste 10 visitas!</h2>
+    <h2 style="font-family:var(--font-display);font-size:26px;font-weight:900;color:var(--ink);margin-bottom:8px;">¡Completaste 10 visitas!</h2>
     <p style="font-size:15px;color:var(--muted);margin-bottom:4px;max-width:300px;">
       Has ganado un <strong style="color:var(--gold);font-family:var(--font-display);">Corte Clásico completamente GRATIS</strong>
     </p>
@@ -1903,7 +1973,124 @@ body {
 </div>
 
 <script>
+// ===== DEMO STATE (localStorage) =====
+var SEED = {
+  name: 'Carlos Mendoza',
+  stamps: 9,
+  freeCuts: 0,
+  appt: null,
+  visits: [
+    {d:'20 Jul', t:'Juan — Corte clásico'},
+    {d:'15 Jul', t:'Luis — Corte + barba'},
+    {d:'10 Jul', t:'Juan — Corte clásico'},
+    {d:'1 Jul',  t:'Pedro — Corte infantil'}
+  ]
+};
+var S;
+function loadState() {
+  try { S = JSON.parse(localStorage.getItem('bb_demo')); } catch(e) { S = null; }
+  if (!S || typeof S.stamps !== 'number') S = JSON.parse(JSON.stringify(SEED));
+}
+function save() { try { localStorage.setItem('bb_demo', JSON.stringify(S)); } catch(e) {} }
+function resetDemo() {
+  try { localStorage.removeItem('bb_demo'); } catch(e) {}
+  loadState(); render(); showScreen('screen-qr'); toast('Demo reiniciada — tarjeta en 9/10');
+}
+
+function todayStr() {
+  var m = ['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'];
+  var d = new Date();
+  return d.getDate() + ' ' + m[d.getMonth()];
+}
+
+function render() {
+  var el = document.getElementById('st-count');
+  if (el) el.textContent = S.stamps;
+  var fill = document.getElementById('st-fill');
+  if (fill) fill.style.width = Math.min(S.stamps * 10, 100) + '%';
+  var sub = document.getElementById('st-sub');
+  if (sub) {
+    sub.innerHTML = S.stamps >= 10
+      ? '<strong style="color:var(--gold);">¡Tarjeta completa!</strong>'
+      : 'Te faltan <strong style="color:var(--gold-light);">' + (10 - S.stamps) + '</strong> para: <strong style="color:var(--gold);">"Corte Clásico Gratis"</strong>';
+  }
+  var grid = document.getElementById('st-grid');
+  if (grid) {
+    var h = '';
+    for (var i = 1; i <= 9; i++) {
+      h += i <= S.stamps
+        ? '<div class="stamp-circle filled"><span class="stamp-icon">✓</span></div>'
+        : '<div class="stamp-circle"><span class="num">' + i + '</span></div>';
+    }
+    h += '<div class="stamp-circle milestone"><span class="stamp-icon">★</span></div>';
+    grid.innerHTML = h;
+  }
+  document.querySelectorAll('.st-name').forEach(function(n){ n.textContent = S.name; });
+  var v = document.getElementById('st-visits');
+  if (v) v.innerHTML = S.visits.map(function(x){
+    return '<div class="visit-row"><span class="date">' + x.d + '</span><span class="barber-icon">✂</span><span class="service">' + x.t + '</span></div>';
+  }).join('');
+  var chip = document.getElementById('st-appt');
+  if (chip) {
+    chip.style.display = S.appt ? 'block' : 'none';
+    if (S.appt) document.getElementById('st-appt-text').textContent =
+      S.appt.date + ' · ' + S.appt.time + ' · ' + S.appt.service + ' con ' + S.appt.barber;
+  }
+  var badge = document.getElementById('badge-checkin');
+  if (badge) badge.textContent = S.stamps + '/10';
+  var rc = document.getElementById('row-checkin');
+  var rr = document.getElementById('row-redeem');
+  if (rc) rc.style.display = S.freeCuts > 0 ? 'none' : 'flex';
+  if (rr) rr.style.display = S.freeCuts > 0 ? 'flex' : 'none';
+}
+
+// Barber registers the customer's visit → stamp is earned live
+function checkIn() {
+  if (S.freeCuts > 0) { toast('★ Este cliente tiene un corte gratis pendiente — usa Canjear'); return; }
+  S.stamps++;
+  S.visits.unshift({d: todayStr(), t: 'Juan — Corte clásico'});
+  if (S.stamps >= 10) {
+    S.stamps = 10; S.freeCuts = 1; save(); render();
+    showScreen('screen-milestone');
+  } else {
+    save(); render();
+    showScreen('screen-stamp');
+    toast('✂ Visita registrada — sello ' + S.stamps + ' de 10');
+  }
+}
+
+// Barber redeems the free cut; that visit counts toward the next card
+function redeemFree() {
+  S.freeCuts = 0;
+  S.stamps = 1;
+  S.visits.unshift({d: todayStr(), t: 'Juan — Corte GRATIS ★'});
+  save(); render();
+  showScreen('screen-barber');
+  toast('★ Corte gratis canjeado — ' + S.name);
+}
+
+function registerDemo() {
+  var inp = document.getElementById('reg-name');
+  var name = (inp && inp.value.trim()) || 'Cliente Nuevo';
+  S = { name: name, stamps: 1, freeCuts: 0, appt: null,
+        visits: [{d: todayStr(), t: 'Juan — Primer corte'}] };
+  save(); render();
+  showScreen('screen-stamp');
+  toast('★ ¡Bienvenido, ' + name.split(' ')[0] + '! Sello 1 de 10');
+}
+
+var SEL = { barber: 'Juan', service: 'Corte clásico', time: '10:10', date: 'Hoy' };
+
+function confirmBooking() {
+  S.appt = { barber: SEL.barber, service: SEL.service, time: SEL.time, date: SEL.date };
+  save(); render();
+  toast('✓ Cita confirmada · Te llegará un recordatorio por WhatsApp');
+  setTimeout(function(){ showScreen('screen-stamp'); }, 1400);
+}
+
 function showScreen(id) {
+  if (id === 'screen-stamp' && S && S.freeCuts > 0) id = 'screen-stamp-free';
+  if (id === 'screen-stamp-free' && S && S.freeCuts === 0) id = 'screen-stamp';
   document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
   document.getElementById(id).classList.add('active');
   window.scrollTo(0, 0);
@@ -1916,26 +2103,34 @@ window.addEventListener('hashchange', function() {
   var el = document.getElementById('screen-' + hash);
   if (el) showScreen('screen-' + hash);
 });
-(function() {
-  var hash = window.location.hash.replace('#', '') || 'qr';
-  var el = document.getElementById('screen-' + hash);
-  if (el) showScreen('screen-' + hash);
-})();
 
 function selectBarber(el) {
   document.querySelectorAll('.barber-card').forEach(c => c.classList.remove('selected'));
   el.classList.add('selected');
+  var n = el.querySelector('.name');
+  if (n) SEL.barber = n.textContent.trim();
 }
 
 function selectService(el) {
   document.querySelectorAll('.service-item').forEach(c => c.classList.remove('selected'));
   el.classList.add('selected');
+  var n = el.querySelector('.name');
+  if (n) SEL.service = n.textContent.trim();
 }
 
 function selectTime(el) {
   if (el.classList.contains('taken') || el.classList.contains('break')) return;
   document.querySelectorAll('.time-slot').forEach(t => t.classList.remove('selected'));
   el.classList.add('selected');
+  SEL.time = el.textContent.trim();
+}
+
+function toast(msg) {
+  var t = document.getElementById('toast-global');
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(t._h);
+  t._h = setTimeout(function(){ t.classList.remove('show'); }, 3000);
 }
 
 function showToast(id) {
@@ -1950,7 +2145,46 @@ document.querySelectorAll('.tab').forEach(t => {
     this.classList.add('active');
   });
 });
+
+document.querySelectorAll('.date-pill').forEach(function(p) {
+  p.addEventListener('click', function() {
+    document.querySelectorAll('.date-pill').forEach(function(x){ x.classList.remove('selected'); });
+    this.classList.add('selected');
+    var dow = this.querySelector('.dow');
+    if (dow) SEL.date = dow.textContent.trim();
+  });
+});
+
+// Hidden reset: tap the shop name on the QR screen 3 times
+(function() {
+  var taps = 0, timer;
+  var h = document.querySelector('#screen-qr .top-bar h1');
+  if (h) h.addEventListener('click', function() {
+    taps++; clearTimeout(timer);
+    timer = setTimeout(function(){ taps = 0; }, 1500);
+    if (taps >= 3) { taps = 0; resetDemo(); }
+  });
+})();
+
+// Init
+if (location.search.indexOf('reset') > -1) {
+  try { localStorage.removeItem('bb_demo'); } catch(e) {}
+  history.replaceState(null, '', location.pathname + location.hash);
+}
+loadState();
+render();
+(function() {
+  var hash = window.location.hash.replace('#', '') || 'qr';
+  var el = document.getElementById('screen-' + hash);
+  if (el) showScreen('screen-' + hash);
+})();
+
+if ('serviceWorker' in navigator && location.protocol === 'https:') {
+  navigator.serviceWorker.register('sw.js').catch(function(){});
+}
 </script>
+
+<div class="toast" id="toast-global"></div>
 
 <!-- Bottom nav -->
 <div class="bottom-nav">
